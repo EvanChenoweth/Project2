@@ -35,6 +35,20 @@ router.get('/', (req, res) => {
 		})
 })
 
+// search route
+router.post('/search', (req, res) => {
+	console.log(req.body.name)
+	Player.findOne({name: req.body.name})
+		.then(player => {
+			const username = req.session.username
+			const loggedIn = req.session.loggedIn
+			
+			res.render('players/show', { player, username, loggedIn })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
 // index that shows only the user's examples
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
@@ -81,6 +95,20 @@ router.get('/:id/edit', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
+
+// router.get('/?q=:query', (req, res) => {
+// 	console.log(req.params)
+// 	const playerId = req.params.id
+// 	Player.findById(playerId)
+// 		.then(player => {
+//             const {username, loggedIn, userId} = req.session
+// 			// redirect to the show page route for the player object 'red'
+// 			res.redirect('players/634d512a3b8b16e426d2b203', { player, username, loggedIn, userId })
+// 		})
+// 		.catch((error) => {
+// 			res.redirect(`/error?error=${error}`)
+// 		})
+// })
 
 // show route
 router.get('/:id', (req, res) => {
