@@ -82,20 +82,6 @@ router.get('/:id/edit', (req, res) => {
 		})
 })
 
-// update route
-router.put('/:id', (req, res) => {
-	const playerId = req.params.id
-	req.body.ready = req.body.ready === 'on' ? true : false
-
-	Player.findByIdAndUpdate(playerId, req.body, { new: true })
-		.then(player => {
-			res.redirect(`/players/${player.id}`)
-		})
-		.catch((error) => {
-			res.redirect(`/error?error=${error}`)
-		})
-})
-
 // show route
 router.get('/:id', (req, res) => {
 	const playerId = req.params.id
@@ -107,6 +93,28 @@ router.get('/:id', (req, res) => {
 		.catch((error) => {
 			res.redirect(`/error?error=${error}`)
 		})
+})
+
+router.put("/:id", (req, res) => {
+    console.log("req.body initially", req.body)
+    const id = req.params.id
+
+    req.body.freeToPlay = req.body.freeToPlay === 'on' ? true : false
+    console.log('req.body after changing checkbox value', req.body)
+    Player.findById(id)
+        .then(player => {
+            if (player.owner == req.session.userId) {
+                // must return the results of this query
+                return player.updateOne(req.body)
+            } else {
+                res.sendStatus(401)
+            }
+        })
+        .then(() => {
+            // console.log('returned from update promise', data)
+            res.redirect(`/players/${id}`)
+        })
+        .catch(err => res.redirect(`/error?error=${err}`))
 })
 
 // delete route

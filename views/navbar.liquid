@@ -1,24 +1,32 @@
 {% block content %}
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a href="/" class="navbar-brand">Stat Tracker</a>
+      <a href="/" class="navbar-brand">Stat Tracker</a>
+      {% if loggedIn %}
+        <a href="/players/mine" class="nav-link text-light">Hello
+          {{ username }}
+        </a>
+      {% endif %}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
         {% if loggedIn %}
-        <a href="/players/mine" class="nav-link text-light">Hello {{ username }} </a>
+          <a href="/players" class="nav-link text-light">View All</a>
+          <a href="/players/new" class="nav-link text-light">New Player</a>
+          <a href="/players/mine" class="nav-link text-light">My Players</a>
+          <a href="/auth/logout" class="nav-link text-light">Log Out</a>
+        {% else %}
+          <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
+          <a href="/auth/login" class="nav-link text-light">Sign In</a>
         {% endif %}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            {% if loggedIn %}
-                <a href="/players" class="nav-link text-light">View All</a>
-                <a href="/players/new" class="nav-link text-light">New Player</a>
-                <a href="/players/mine" class="nav-link text-light">My Favorites</a>
-                <a href="/auth/logout" class="nav-link text-light">Log Out</a>
-            {% else %}
-                <a href="/auth/signup" class="nav-link text-light">Sign Up</a>
-                <a href="/auth/login" class="nav-link text-light">Sign In</a>
-            {% endif %}
-        </div>
+      </div>
+      <form action="{{ routes.search_url }}">
+        <input type="text" placeholder="Search" name="{{ player.name }}" value="{{ search.terms | escape }}">
+        <input type="submit" value="Search">
+        {% for player in search.results %}
+        {% endfor %}
+      </form>
     </div>
-</nav>
-{% endblock %}
+  </nav>
+{% endblock %}}
