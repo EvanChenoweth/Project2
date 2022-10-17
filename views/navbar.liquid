@@ -22,11 +22,9 @@
         {% endif %}
       </div>
       <form action="{{ routes.search_url }}">
-        <input type="text" placeholder="Search" name="{{ player.name }}" value="{{ search.terms | escape }}">
+        <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}">
         <input type="submit" value="Search">
-        {% for player in search.results %}
-        {% endfor %}
       </form>
     </div>
   </nav>
-{% endblock %}}
+{% endblock %}

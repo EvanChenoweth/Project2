@@ -35,7 +35,20 @@ router.get('/', (req, res) => {
 		})
 })
 
-// index that shows only the user's examples
+// index that shows only the user's players
+router.get('/players?q=red', (req, res) => {
+    // destructure user info from req.session
+    const { username, userId, loggedIn } = req.session
+	Player.find({ owner: userId })
+		.then(players => {
+			res.render('players/634d512a3b8b16e426d2b203', { players, username, loggedIn })
+		})
+		.catch(error => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
+// index that shows only the user's players
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
@@ -82,6 +95,19 @@ router.get('/:id/edit', (req, res) => {
 		})
 })
 
+// alphabetical route
+router.get('/players?q=red', (req, res) => {
+	const playerId = req.params.id
+	Player.findById(playerId)
+		.then(player => {
+            const {username, loggedIn, userId} = req.session
+			res.redirect('players/634d512a3b8b16e426d2b203', { player, username, loggedIn, userId })
+		})
+		.catch((error) => {
+			res.redirect(`/error?error=${error}`)
+		})
+})
+
 // show route
 router.get('/:id', (req, res) => {
 	const playerId = req.params.id
@@ -99,8 +125,6 @@ router.put("/:id", (req, res) => {
     console.log("req.body initially", req.body)
     const id = req.params.id
 
-    req.body.freeToPlay = req.body.freeToPlay === 'on' ? true : false
-    console.log('req.body after changing checkbox value', req.body)
     Player.findById(id)
         .then(player => {
             if (player.owner == req.session.userId) {
