@@ -1,0 +1,28 @@
+{% layout 'layout.liquid'%}
+{% block content %}
+  <div>
+    <h2 class="display-6" style="text-align:center; font-family: helvetica;">All players</h2>
+    <div class="row">
+      {% for player in players %}
+        <div class="card" style="width: 18rem;">
+          <h5 class="card-header">{{ player.name }}
+          </h5>
+          <div class="card-body">
+            <p class="card-text">
+              Sport/Game of player:
+              {{ player.game }}
+            </p>
+            <p class="card-text">
+              Amount of Total Earnings:
+              {{ player.amount }}
+            </p>
+            <a href="/players/{{ player.id }}" class="btn btn-info">
+              View
+              {{ player.name }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

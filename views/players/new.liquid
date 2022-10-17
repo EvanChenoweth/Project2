@@ -1,0 +1,18 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+  <div class="container-sm">
+    <form action="/players" method="POST">
+      <fieldset>
+        <legend>Create New Player</legend>
+        <label class="form-label">Name:
+        </label>
+        <input type="text" name="name" placeholder="enter players name" class="form-control">
+        <label class="form-label">Game/Sport:</label>
+        <input type="text" name="game" placeholder="enter players game/sport" class="form-control">
+        <label class="form-label">Amount of earnings in USD$:</label>
+        <input type="number" name="amount" class="form-control">
+      </fieldset>
+      <input type="submit" value="Create New Player" class="btn btn-success">
+    </form>
+  </div>
+{% endblock %}
