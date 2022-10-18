@@ -49,7 +49,8 @@ router.post('/search', (req, res) => {
 			res.redirect(`/error?error=${error}`)
 		})
 })
-// index that shows only the user's examples
+
+// index that shows only the user's 
 router.get('/mine', (req, res) => {
     // destructure user info from req.session
     const { username, userId, loggedIn } = req.session
