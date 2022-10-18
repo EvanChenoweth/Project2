@@ -22,7 +22,7 @@ As a user I will be able to:
 - Set a players stats
 - View a list of players
 - View a list of favorited players
-- Sort player by a statistic (A-Z, Points High->Low, Points Low->High)
+- Sort players alphabetically
 - Remove a player from favorites
 
 Schedule:
