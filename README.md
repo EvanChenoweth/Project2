@@ -56,3 +56,13 @@ ENTITY RELATIONSHIP DIAGRAM
 ROUTES SPREADSHEET -
 
 - https://docs.google.com/spreadsheets/d/1g495oyfOGbxIiY080p4kUdJ6_6dvPIOfYE1diKCLS_k/edit#gid=0
+
+SEED DATA -
+- [
+        { name: "adkljglk", game: "ldfkjglsg", amount: 202020 },
+        { name: "testuser", game: "testusers2", amount: 1020020 },
+        { name: "blue", game: "football", amount: 20020202 },
+        { name: "red", game: "soccer", amount: 10104404 },
+        { name: "rrr", game: "rrr", amount: 10104404},
+        { name: "best soccer player", game: "football", amount: 10110},
+    ]
