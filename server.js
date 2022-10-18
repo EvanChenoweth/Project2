@@ -1,11 +1,13 @@
 ////////////////////
 //  Dependencies  //
 ////////////////////
+// Nit: choose double or single quotes
 require("dotenv").config() // make env variables available
 const express = require("express")
 const middleware = require('./utils/middleware')
 const PlayerRouter = require('./controllers/player')
 const UserRouter = require('./controllers/user')
+// Nit: remove unused User model import
 const User = require("./models/user")
 // SEE MORE DEPENDENCIES IN ./utils/middleware.js
 // user and resource routes linked in ./utils/middleware.js

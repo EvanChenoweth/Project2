@@ -76,6 +76,7 @@ router.post('/', (req, res) => {
 	req.body.owner = req.session.userId
 	Player.create(req.body)
 		.then(player => {
+			// Nit: remove console.logs
 			console.log('this was returned from create', player)
 			res.redirect('/players')
 		})
@@ -128,6 +129,7 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
 	const playerId = req.params.id
 	Player.findByIdAndRemove(playerId)
+	// Nit: can remove unused `player` here
 		.then(player => {
 			res.redirect('/players')
 		})
