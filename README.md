@@ -51,3 +51,8 @@ WIREFRAMES
 ENTITY RELATIONSHIP DIAGRAM
 
 ![ERD](https://user-images.githubusercontent.com/46133394/194806062-7c22e77a-99b2-4a94-b9d0-17f0d0ff77ff.png)
+
+
+ROUTES SPREADSHEET -
+
+- https://docs.google.com/spreadsheets/d/1g495oyfOGbxIiY080p4kUdJ6_6dvPIOfYE1diKCLS_k/edit#gid=0
