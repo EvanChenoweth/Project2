@@ -66,3 +66,6 @@ SEED DATA -
         { name: "rrr", game: "rrr", amount: 10104404},
         { name: "best soccer player", game: "football", amount: 10110},
     ]
+
+DEPLOYED SITE LINK -
+- stattracker.fly.dev
