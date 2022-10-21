@@ -1,3 +1,5 @@
+[stattracker.fly.dev/](https://stattracker.fly.dev/)
+
 Players / Team Data Tracker
 
 Player Data Tracker is an application that allows you to enter
@@ -68,4 +70,4 @@ SEED DATA -
     ]
 
 DEPLOYED SITE LINK -
-- stattracker.fly.dev
+- [stattracker.fly.dev](https://stattracker.fly.dev/)
